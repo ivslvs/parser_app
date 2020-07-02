@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  web:
+    container_name: parser
+    build: ./app
+    ports:
+      - "5000:5000"
+    links:
+      - redis
+    depends_on:
+      - redis
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./app:/app
+
+  redis:
+    container_name: redis
+    image: redis:5.0.5
+    hostname: redis
+    ports:
+      - '6379:6379'
+
+  worker:
+    build:
+      context: ./app
+    hostname: worker
+    entrypoint: celery
+    command: celery -A worker.celery worker --loglevel=info
+    volumes:
+      - ./app:/app
+    links:
+      - redis
+    depends_on:
+      - redis
