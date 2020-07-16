@@ -21,8 +21,8 @@ docker-compose up
 The routes:
 
 /tags/ - POST request of random URL. Exp: {"url":"https://www.google.com"} in JSON. 
-Response - id
+Response - task_id
 
 
-/tags/id - GET request that parses received URL and counts all HTML tags. 
+/tags/task_id - GET request that parses received URL and counts all HTML tags. 
 Response - Exp: {html: 1, head: 1, body: 1. p: 10, img: 2} in JSON
