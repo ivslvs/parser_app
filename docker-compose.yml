@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     container_name: parser
-    build: ./app
+    build: ./myapp
     ports:
       - "5000:5000"
     links:
@@ -13,7 +13,7 @@ services:
     environment:
       - FLASK_ENV=development
     volumes:
-      - ./app:/app
+      - ./myapp:/app
 
   redis:
     container_name: redis
@@ -24,12 +24,12 @@ services:
 
   worker:
     build:
-      context: ./app
+      context: ./myapp
     hostname: worker
     entrypoint: celery
     command: celery -A worker.celery worker --loglevel=info
     volumes:
-      - ./app:/app
+      - ./myapp:/app
     links:
       - redis
     depends_on:
