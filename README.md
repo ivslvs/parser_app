@@ -1,4 +1,5 @@
-This parser is written in Python using the micro framework Flask (RESTful).
+This parser counts all html tags in page. Application is written in Python using the micro framework Flask (RESTful). 
+
 
 - Python 3.8
 
