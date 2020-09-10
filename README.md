@@ -1,3 +1,4 @@
+# Description:
 This parser counts all html tags in page. Application is written in Python using the micro framework Flask (RESTful). 
 
 
@@ -11,7 +12,7 @@ This parser counts all html tags in page. Application is written in Python using
 
 
 
-Installing:
+# Installing:
 
 docker-compose build
 
@@ -19,7 +20,7 @@ docker-compose up
 
 
 
-The routes:
+# The routes:
 
 /tags/ - POST request of random URL. Exp: {"url":"https://www.google.com"} in JSON. 
 Response - task_id
