@@ -42,7 +42,7 @@ class UrlCreate(Resource):
         return url_check
 
     def post(self):
-        """ Url validation and sending task to Celery"""
+        """ Url validation and sending task"""
         url = request.get_json()['url']
 
         if self.check_url_regex(url):
