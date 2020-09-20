@@ -1,4 +1,4 @@
-## This parser is written in Python using the micro framework Flask (RESTful).
+ This parser is written in Python using the micro framework Flask (RESTful).
 
 - Python 3.8
 
