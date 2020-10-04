@@ -3,11 +3,13 @@ version: "3"
 services:
   web:
     container_name: parser
-    build: ./myapp
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     links:
-      - redis
+      - 'redis:redis'
     depends_on:
       - redis
     environment:
@@ -16,21 +18,18 @@ services:
       - ./myapp:/app
 
   redis:
-    container_name: redis
-    image: redis:5.0.5
+    image: redis
     hostname: redis
     ports:
       - '6379:6379'
 
-  worker:
-    build:
-      context: ./myapp
+  celeryworker:
+    build: .
     hostname: worker
-    entrypoint: celery
-    command: celery -A worker.celery worker --loglevel=info
     volumes:
       - ./myapp:/app
     links:
-      - redis
+      - 'redis:redis'
     depends_on:
       - redis
+    command: celery -A app.celery worker --loglevel=info
