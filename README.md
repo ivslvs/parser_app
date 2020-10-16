@@ -1,14 +1,11 @@
- This parser is written in Python using the micro framework Flask (RESTful).
+## Application description
+This parser is written in Python using the micro framework Flask (RESTful).
+User sends random url and receives all html tags.
 
 - Python 3.8
 - Flask
 - Docker
 - Celery
-
-## Application description
-User sends random url and receives all html tags.
-
-
 
 ## Quick start
 
