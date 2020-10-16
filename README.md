@@ -1,5 +1,6 @@
 ## Application description
 This parser is written in Python using the micro framework Flask (RESTful).
+
 User sends random url and receives all html tags.
 
 - Python 3.8
