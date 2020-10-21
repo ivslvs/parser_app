@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, Counter
 from bs4 import BeautifulSoup
 from flask import Flask, request, abort, jsonify
 from flask_restful import Api, Resource
@@ -30,11 +30,7 @@ celery = Celery('task',
 def get_all_html_tags(html) -> dict:
     """Parsing html"""
     soup = BeautifulSoup(html, 'lxml')
-    dict_tags = defaultdict(int)
-
-    for child in soup.recursiveChildGenerator():
-        if child.name:
-            dict_tags[child.name] += 1
+    dict_tags = Counter([child.name for child in soup.recursiveChildGenerator()])
     return dict_tags
 
 
